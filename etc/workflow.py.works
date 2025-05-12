@@ -1,0 +1,31 @@
+import urllib3
+
+from pyaoscx.session import Session
+from pyaoscx.pyaoscx_factory import PyaoscxFactory
+from utility.connect import connect
+import pyaoscx.firmware as firm
+from utility.afc_list import afc_list
+from utility.psm_list import psm_list
+from utility.switch_list import switch_list
+from utility.workload_list import workload_list
+
+# There are two approaches to workflows, both using the session.
+version = "10.04"
+switch_list = ['10.250.201.101','10.250.201.102']
+
+
+urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
+
+for s in switch_list:
+
+    key = connect(s, version, "admin", "admin")
+    #key.firm.
+    print(s)
+    key.close()
+
+    '''
+    s = Session(switch_ip, version)
+    s.open("admin", "admin", use_proxy=False)
+    '''
+
+    print('test')
